@@ -2,7 +2,7 @@
 
 RewriteEngine On
 
-# 1. Rediriger www vers la version sans www (en HTTPS)
+# 1. www -> non-www (en HTTPS)
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
@@ -10,5 +10,15 @@ RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 3. Page 404 personnalisée (optionnel — sert l'accueil si une page manque)
-# ErrorDocument 404 /index.html
+# 3. URLs propres : rediriger /index.html (ou /index) vers la racine
+RewriteCond %{THE_REQUEST} \s/+index(\.html)?[\s?] [NC]
+RewriteRule ^ / [L,R=301]
+
+# 4. URLs propres : rediriger /page.html vers /page (requête directe uniquement)
+RewriteCond %{THE_REQUEST} \s/+([^.\s]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [L,R=301]
+
+# 5. Servir /page via page.html en interne (sans redirection ni boucle)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
