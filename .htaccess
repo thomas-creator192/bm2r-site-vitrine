@@ -1,0 +1,14 @@
+# BM2R — règles serveur (o2switch / Apache)
+
+RewriteEngine On
+
+# 1. Rediriger www vers la version sans www (en HTTPS)
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# 2. Forcer le HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 3. Page 404 personnalisée (optionnel — sert l'accueil si une page manque)
+# ErrorDocument 404 /index.html

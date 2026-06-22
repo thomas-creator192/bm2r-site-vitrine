@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bm2r-renovation.netlify.app/sitemap.xml
+Sitemap: https://bm2rbatimulti.fr/sitemap.xml
