@@ -711,7 +711,30 @@ ul { margin: 0; padding: 0; list-style: none; }
   .metier-card.span-feature { grid-column: span 1; }
 }
 
+/* ---------- Bouton d'appel flottant (mobile) ---------- */
+.fab-call {
+  position: fixed; right: 16px; bottom: 16px; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--gold); color: #2a1e05;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  transition: transform .18s ease, background .18s ease;
+}
+.fab-call:hover { background: var(--gold-soft); color: #2a1e05; }
+.fab-call:active { transform: scale(.94); }
+.fab-call svg { width: 26px; height: 26px; }
+@media (min-width: 880px) { .fab-call { display: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .fab-call { animation: fab-pulse 2.4s ease-out infinite; }
+  @keyframes fab-pulse {
+    0%   { box-shadow: 0 8px 20px rgba(0,0,0,.3), 0 0 0 0 rgba(224,165,43,.5); }
+    70%  { box-shadow: 0 8px 20px rgba(0,0,0,.3), 0 0 0 14px rgba(224,165,43,0); }
+    100% { box-shadow: 0 8px 20px rgba(0,0,0,.3), 0 0 0 0 rgba(224,165,43,0); }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { scroll-behavior: auto; }
   .metier-card { transition: none; }
+  .fab-call { animation: none; }
 }
