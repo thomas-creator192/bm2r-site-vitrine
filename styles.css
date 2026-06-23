@@ -76,6 +76,18 @@ h1, h2, h3, h4 {
 }
 
 p { margin: 0 0 1em; }
+
+/* Anti-orphelins en fin de paragraphe (typo FR) */
+.lead,
+.article-body p, .article-body li,
+.solo p, .solo li,
+.feature p, .metier-card p, .presta p, .step p,
+.post-card p, .review p,
+.faq-answer p,
+.footer-brand p {
+  text-wrap: pretty;
+}
+
 a { color: var(--green-700); text-decoration: none; }
 img { max-width: 100%; display: block; }
 ul { margin: 0; padding: 0; list-style: none; }
@@ -423,7 +435,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .ba-tag.before { background: rgba(34,40,31,.78); color: var(--ivory-300); }
 .ba-tag.after { background: var(--green-700); color: var(--ivory-100); }
 .ba-cap { padding: 14px 16px; border-top: 1px solid var(--line); }
-.ba-cap b { font-size: .98rem; color: var(--green-800); }
+.ba-cap b { display: block; font-size: .98rem; color: var(--green-800); }
 .ba-cap small { display: block; color: var(--ink-faint); font-size: .82rem; }
 
 /* ---------- Comparateur avant / après (curseur) ---------- */
