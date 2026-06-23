@@ -16,7 +16,8 @@
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<!-- data-recaptcha-site : clé PUBLIQUE reCAPTCHA v3 (à remplacer ; laisser vide désactive reCAPTCHA côté visiteur) -->
+<body data-recaptcha-site="VOTRE_CLE_SITE_RECAPTCHA">
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="wrap">
@@ -143,8 +144,16 @@
           <div class="form-row">
             <div class="field"><label for="message">Votre message <span class="req">*</span></label><textarea id="message" name="message" required placeholder="Décrivez votre projet, vos contraintes, vos délais…"></textarea></div>
           </div>
-          <label class="consent"><input type="checkbox" required /> <span>J'accepte que BM2R utilise ces informations pour me recontacter au sujet de ma demande.</span></label>
+          <label class="consent"><input type="checkbox" name="consent" required /> <span>J'accepte que BM2R utilise ces informations pour me recontacter au sujet de ma demande.</span></label>
+
+          <!-- Honeypot anti-spam : champ piège, invisible pour les humains, ne pas remplir -->
+          <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden">
+            <label>Ne remplissez pas ce champ <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <input type="hidden" name="recaptcha_token" id="recaptcha_token" />
+
           <button type="submit" class="btn btn--primary btn--block">Envoyer ma demande de devis</button>
+          <p class="form-error" id="form-error" role="alert" style="display:none;color:#c0392b;margin-top:10px"></p>
           <p class="form-note">Réponse sous 24–48 h ouvrées. Vous pouvez aussi appeler le 06 10 03 34 08.</p>
         </form>
         <div class="form-success" id="form-success">
