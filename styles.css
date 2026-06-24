@@ -317,7 +317,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .solo h2 { font-size: clamp(1.6rem, 5vw, 2.3rem); }
 .solo-vs { display: grid; gap: 14px; }
 .solo-col { border-radius: var(--radius-lg); padding: 20px; }
-.solo-col h4 { font-size: 1.02rem; margin-bottom: 12px; display: flex; align-items: center; gap: 9px; }
+.solo-col h4 { font-size: 1.02rem; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 9px; }
+.solo-col h4 svg { width: 22px; height: 22px; flex: 0 0 auto; margin-top: 2px; }
+/* Section "L'avantage BM2R" (colonne good seule) : gros picto à gauche, titre centré verticalement à sa droite */
+.solo-grid > .solo-col.good h4 { align-items: center; gap: 14px; }
+.solo-grid > .solo-col.good h4 svg { width: 150px; height: 150px; margin-top: 0; }
 .solo-col.bad { background: var(--white); border: 1px solid var(--line); }
 .solo-col.bad h4 { color: var(--ink-soft); }
 .solo-col.good { background: var(--green-700); color: var(--ivory-100); border: 1px solid var(--green-700); }
