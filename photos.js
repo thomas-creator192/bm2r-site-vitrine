@@ -1,28 +1,47 @@
-// BM2R — chargement des photos (libres de droit, Unsplash) avec repli sur le placeholder
+// BM2R — chargement des photos.
+// Valeur = chemin local (commence par "assets/") => vraie photo BM2R.
+// Valeur = identifiant Unsplash => placeholder temporaire (sujets pas encore shootés : élec, clim).
 (function () {
   var MAP = {
-    renovation:  "1503387762-592deb58ef4e",
-    renovation2: "1504307651254-35680f356dfd",
-    interior:    "1513694203232-719a280e022f",
-    interior2:   "1600210492486-724fe5c67fb0",
-    living:      "1493809842364-78817add7ffb",
+    // --- Vraies photos BM2R (chantiers du client) ---
+    accueil:      "assets/photos/loft.webp",
+    renovation:   "assets/photos/reno-apres.webp",
+    renovation2:  "assets/photos/loft.webp",
+    interior:     "assets/photos/loft.webp",
+    interior2:    "assets/photos/peinture.webp",
+    living:       "assets/photos/loft.webp",
+    bathroom:     "assets/photos/sdb1.webp",
+    bathroom2:    "assets/photos/sdb2.webp",
+    bathroom3:    "assets/photos/sdb1.webp",
+    bathroom_dark:"assets/photos/sdb2.webp",
+    shower:       "assets/photos/sdb1.webp",
+    paint:        "assets/photos/peinture.webp",
+    wood:         "assets/photos/fenetre-apres.webp",
+    window:       "assets/photos/fenetre-apres.webp",
+    drywall:      "assets/photos/combles-apres.webp",
+    kitchen:      "assets/photos/cuisine.webp",
+    kitchen2:     "assets/photos/cuisine.webp",
+    tools:        "assets/photos/sol-avant.webp",
+
+    // --- Paires avant / après dédiées (sliders Réalisations) ---
+    ba_combles_avant: "assets/photos/combles-avant.webp",
+    ba_combles_apres: "assets/photos/combles-apres.webp",
+    ba_sol_avant:     "assets/photos/sol-avant.webp",
+    ba_sol_apres:     "assets/photos/sol-apres.webp",
+    ba_reno_avant:    "assets/photos/reno-avant.webp",
+    ba_reno_apres:    "assets/photos/reno-apres.webp",
+    ba_fenetre_avant: "assets/photos/fenetre-avant.webp",
+    ba_fenetre_apres: "assets/photos/fenetre-apres.webp",
+
+    // --- Placeholders Unsplash (à remplacer quand le client aura les photos) ---
     elec:        "1621905251918-48416bd8575a",
-    bathroom:    "1620626011761-996317b8d101",
-    bathroom2:   "1584622650111-993a426fbf0a",
-    bathroom3:   "1552321554-5fefe8c9ef14",
-    bathroom_dark:"1600566752355-35792bedcfea",
-    paint:       "1562259949-e8e7689d7828",
-    wood:        "1589939705384-5185137a7f0f",
-    drywall:     "1607400201889-565b1ee75f8e",
-    kitchen:     "1556912173-3bb406ef7e77",
-    kitchen2:    "1600585152220-90363fe7e115",
     thermostat:  "1545259741-2ea3ebf61fa3",
-    tools:       "1581578731548-c64695cc6952",
-    window:      "1600566752355-35792bedcfea",
-    shower:      "1552321554-5fefe8c9ef14",
     radiator:    "1545259741-2ea3ebf61fa3"
   };
-  function url(id, w) { return "https://images.unsplash.com/photo-" + id + "?auto=format&fit=crop&w=" + (w || 1100) + "&q=72"; }
+  function url(id, w) {
+    if (id.indexOf("assets/") === 0) return id;          // photo locale
+    return "https://images.unsplash.com/photo-" + id + "?auto=format&fit=crop&w=" + (w || 1100) + "&q=72";
+  }
   function fill(el) {
     var key = el.getAttribute("data-photo");
     if (!key || !MAP[key]) return;

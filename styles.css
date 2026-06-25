@@ -178,7 +178,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.05; }
 .logo-text b { font-family: var(--ff-head); font-weight: 800; font-size: 1.28rem; color: var(--green-800); letter-spacing: -.01em; }
 .logo-text span { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
-.logo-tag { font-family: var(--ff-head); font-weight: 700; font-size: .82rem; line-height: 1.12; color: var(--green-700); letter-spacing: .01em; }
+.logo-tag { display: flex; flex-direction: column; justify-content: center; margin: 0; transform: translateY(8px); font-family: var(--ff-head); font-weight: 700; font-size: .82rem; line-height: 1.12; color: var(--green-700); letter-spacing: .01em; }
 .nav .logo-tag { display: none; }
 @media (min-width: 1090px) { .nav .logo-tag { display: block; } }
 .site-footer .logo-tag, .mobile-menu .logo-tag { }
@@ -451,7 +451,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   cursor: ew-resize; background: var(--green-100);
 }
 .ba-compare .bac-layer { position: absolute; inset: 0; border: 0; border-radius: 0; }
-.ba-compare .bac-before { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
+.ba-compare .bac-before img.ph-photo { clip-path: inset(0 calc(100% - var(--pos)) 0 0); }
 .ba-compare .ba-tag { z-index: 4; transition: opacity .15s ease; }
 .ba-compare .ba-tag.before { top: 12px; left: 12px; right: auto; }
 .ba-compare .ba-tag.after { top: 12px; right: 12px; left: auto; }
@@ -488,6 +488,13 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .ba-compare.is-touched .bac-hint { opacity: 0; }
 .bac-hint svg { width: 13px; height: 13px; }
+
+/* Bloc sans vraie paire avant/après -> tuile photo simple (seul l'« après » s'affiche) */
+.ba-compare:not(.live) { cursor: default; touch-action: auto; }
+.ba-compare:not(.live) .bac-before,
+.ba-compare:not(.live) .ba-tag,
+.ba-compare:not(.live) .bac-hint,
+.ba-compare:not(.live) .bac-handle { display: none; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--green-900); color: var(--ivory-300); padding-top: 48px; }

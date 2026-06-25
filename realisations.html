@@ -24,6 +24,9 @@
 <circle cx="50" cy="50" r="7" fill="white"/>
 </svg>
 </template>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 </head>
 <body>
 <!-- ============ HEADER ============ -->
@@ -130,17 +133,6 @@
     <div class="ba-grid">
       <div class="ba-item" data-cat="sdb">
         <div class="ba-compare" data-compare>
-          <div class="ph bac-layer bac-after" data-photo="shower" data-alt="Après — Salle de bain clé en main" data-w="900"></div>
-          <div class="ph bac-layer bac-before" data-photo="bathroom" data-alt="Avant — Salle de bain clé en main" data-w="900"></div>
-          <span class="ba-tag before">Avant</span>
-          <span class="ba-tag after">Après</span>
-          <span class="bac-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Glissez pour comparer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
-          <button class="bac-handle" type="button" role="slider" aria-label="Glisser pour comparer l'avant et l'après" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><span class="bac-grip"></span></button>
-        </div>
-        <div class="ba-cap"><span class="ba-cat">Salle de bain</span><b>Salle de bain clé en main</b><small>La Clayette · Douche à l'italienne</small></div>
-      </div>
-      <div class="ba-item" data-cat="sdb">
-        <div class="ba-compare" data-compare>
           <div class="ph bac-layer bac-after" data-photo="bathroom3" data-alt="Après — Salle d'eau dans les combles" data-w="900"></div>
           <div class="ph bac-layer bac-before" data-photo="renovation" data-alt="Avant — Salle d'eau dans les combles" data-w="900"></div>
           <span class="ba-tag before">Avant</span>
@@ -151,9 +143,9 @@
         <div class="ba-cap"><span class="ba-cat">Salle de bain</span><b>Salle d'eau dans les combles</b><small>Charolles · Sous pente</small></div>
       </div>
       <div class="ba-item" data-cat="placo">
-        <div class="ba-compare" data-compare>
-          <div class="ph bac-layer bac-after" data-photo="drywall" data-alt="Après — Isolation & doublage" data-w="900"></div>
-          <div class="ph bac-layer bac-before" data-photo="tools" data-alt="Avant — Isolation & doublage" data-w="900"></div>
+        <div class="ba-compare live" data-compare>
+          <div class="ph bac-layer bac-after" data-photo="ba_combles_apres" data-alt="Après — Isolation & doublage" data-w="900"></div>
+          <div class="ph bac-layer bac-before" data-photo="ba_combles_avant" data-alt="Avant — Isolation & doublage" data-w="900"></div>
           <span class="ba-tag before">Avant</span>
           <span class="ba-tag after">Après</span>
           <span class="bac-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Glissez pour comparer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
@@ -162,15 +154,15 @@
         <div class="ba-cap"><span class="ba-cat">Placo / Isolation</span><b>Isolation & doublage</b><small>Marcigny · Maison ancienne</small></div>
       </div>
       <div class="ba-item" data-cat="placo">
-        <div class="ba-compare" data-compare>
-          <div class="ph bac-layer bac-after" data-photo="living" data-alt="Après — Création de cloisons" data-w="900"></div>
-          <div class="ph bac-layer bac-before" data-photo="interior" data-alt="Avant — Création de cloisons" data-w="900"></div>
+        <div class="ba-compare live" data-compare>
+          <div class="ph bac-layer bac-after" data-photo="ba_reno_apres" data-alt="Après — Rénovation complète d'une pièce" data-w="900"></div>
+          <div class="ph bac-layer bac-before" data-photo="ba_reno_avant" data-alt="Avant — Rénovation complète d'une pièce" data-w="900"></div>
           <span class="ba-tag before">Avant</span>
           <span class="ba-tag after">Après</span>
           <span class="bac-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Glissez pour comparer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
           <button class="bac-handle" type="button" role="slider" aria-label="Glisser pour comparer l'avant et l'après" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><span class="bac-grip"></span></button>
         </div>
-        <div class="ba-cap"><span class="ba-cat">Placo / Isolation</span><b>Création de cloisons</b><small>Gueugnon · Séjour redécoupé</small></div>
+        <div class="ba-cap"><span class="ba-cat">Rénovation</span><b>Rénovation complète d'une pièce</b><small>Transformation du sol au plafond</small></div>
       </div>
       <div class="ba-item" data-cat="peinture">
         <div class="ba-compare" data-compare>
@@ -184,15 +176,15 @@
         <div class="ba-cap"><span class="ba-cat">Peinture</span><b>Mise en peinture chambres</b><small>Digoin · Teintes douces</small></div>
       </div>
       <div class="ba-item" data-cat="peinture">
-        <div class="ba-compare" data-compare>
-          <div class="ph bac-layer bac-after" data-photo="paint" data-alt="Après — Préparation & enduits" data-w="900"></div>
-          <div class="ph bac-layer bac-before" data-photo="tools" data-alt="Avant — Préparation & enduits" data-w="900"></div>
+        <div class="ba-compare live" data-compare>
+          <div class="ph bac-layer bac-after" data-photo="ba_sol_apres" data-alt="Après — Réfection de sol" data-w="900"></div>
+          <div class="ph bac-layer bac-before" data-photo="ba_sol_avant" data-alt="Avant — Réfection de sol" data-w="900"></div>
           <span class="ba-tag before">Avant</span>
           <span class="ba-tag after">Après</span>
           <span class="bac-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Glissez pour comparer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>
           <button class="bac-handle" type="button" role="slider" aria-label="Glisser pour comparer l'avant et l'après" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><span class="bac-grip"></span></button>
         </div>
-        <div class="ba-cap"><span class="ba-cat">Peinture</span><b>Préparation & enduits</b><small>Marcigny · Murs anciens</small></div>
+        <div class="ba-cap"><span class="ba-cat">Sol / Carrelage</span><b>Réfection de sol</b><small>Pose de carrelage</small></div>
       </div>
       <div class="ba-item" data-cat="elec">
         <div class="ba-compare" data-compare>
@@ -206,9 +198,9 @@
         <div class="ba-cap"><span class="ba-cat">Électricité</span><b>Rénovation tableau électrique</b><small>Charolles · Mise aux normes</small></div>
       </div>
       <div class="ba-item" data-cat="menuiserie">
-        <div class="ba-compare" data-compare>
-          <div class="ph bac-layer bac-after" data-photo="window" data-alt="Après — Remplacement de fenêtres" data-w="900"></div>
-          <div class="ph bac-layer bac-before" data-photo="renovation2" data-alt="Avant — Remplacement de fenêtres" data-w="900"></div>
+        <div class="ba-compare live" data-compare>
+          <div class="ph bac-layer bac-after" data-photo="ba_fenetre_apres" data-alt="Après — Remplacement de fenêtres" data-w="900"></div>
+          <div class="ph bac-layer bac-before" data-photo="ba_fenetre_avant" data-alt="Avant — Remplacement de fenêtres" data-w="900"></div>
           <span class="ba-tag before">Avant</span>
           <span class="ba-tag after">Après</span>
           <span class="bac-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> Glissez pour comparer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></span>

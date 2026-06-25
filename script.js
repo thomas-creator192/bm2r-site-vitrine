@@ -120,7 +120,7 @@
 
   // ----- Comparateur avant / après (curseur déplaçable) -----
   function initCompare() {
-    var nodes = document.querySelectorAll('.ba-compare');
+    var nodes = document.querySelectorAll('.ba-compare.live');
     if (!nodes.length) return;
     nodes.forEach(function (el) {
       var handle = el.querySelector('.bac-handle');
