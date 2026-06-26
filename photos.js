@@ -22,6 +22,7 @@
     kitchen:      "assets/photos/cuisine.webp",
     kitchen2:     "assets/photos/cuisine.webp",
     tools:        "assets/photos/sol-avant.webp",
+    chauffe_eau:  "assets/photos/chauffe-eau.webp",
 
     // --- Paires avant / après dédiées (sliders Réalisations) ---
     ba_combles_avant: "assets/photos/combles-avant.webp",
@@ -33,10 +34,10 @@
     ba_fenetre_avant: "assets/photos/fenetre-avant.webp",
     ba_fenetre_apres: "assets/photos/fenetre-apres.webp",
 
-    // --- Placeholders Unsplash (à remplacer quand le client aura les photos) ---
-    elec:        "1621905251918-48416bd8575a",
-    thermostat:  "1545259741-2ea3ebf61fa3",
-    radiator:    "1545259741-2ea3ebf61fa3"
+    // --- Électricité & climatisation (vraies photos BM2R, plus aucun Unsplash) ---
+    elec:        "assets/photos/elec-accueil.webp",
+    thermostat:  "assets/photos/clim-accueil.webp",
+    radiator:    "assets/photos/clim-accueil.webp"
   };
   function url(id, w) {
     if (id.indexOf("assets/") === 0) return id;          // photo locale
