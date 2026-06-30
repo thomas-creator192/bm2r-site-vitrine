@@ -372,6 +372,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .review .who b { display: block; font-size: .95rem; color: var(--green-800); }
 .review .who small { color: var(--ink-faint); font-size: .82rem; }
 .reviews-note { font-size: .8rem; color: var(--ink-faint); margin-top: 18px; text-align: center; }
+/* Avis unique : carte centrée et largeur contenue (au lieu d'une demi-colonne) */
+.reviews .reviews-grid--single { grid-template-columns: 1fr; max-width: 620px; margin: 0 auto; }
+.reviews-cta { text-align: center; margin-top: 22px; }
 
 /* ---------- Zone d'intervention ---------- */
 .zone { background: var(--white); }
