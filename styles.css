@@ -240,6 +240,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 .mobile-menu nav a.sub { padding-left: 28px; font-size: .98rem; color: var(--ink-soft); font-weight: 400; }
 .mobile-menu nav .group-label { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); padding: 18px 12px 6px; font-weight: 700; }
 .mobile-menu .mm-cta { padding: 18px 16px 28px; display: grid; gap: 10px; }
+/* Le bouton CTA ne doit pas hériter de la couleur sombre / bordure des liens du menu */
+.mobile-menu .mm-cta .btn { border-bottom: 0; }
+.mobile-menu .mm-cta .btn--primary { color: var(--ivory-100); }
+.mobile-menu .mm-cta .btn--primary:hover { color: var(--ivory-100); }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; background: var(--green-800); color: var(--ivory-100); overflow: hidden; }
