@@ -93,7 +93,8 @@ p { margin: 0 0 1em; }
 @media (max-width: 599.98px) {
   .article-body p, .article-body li,
   .solo p,
-  .faq-answer p {
+  .faq-answer p,
+  .hero-copy .lead, .page-hero .lead, .article-hero .lead {
     text-align: justify;
     text-justify: inter-word;
     -webkit-hyphens: auto;
