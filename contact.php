@@ -25,12 +25,51 @@ function respond($ok, $error = null)
     exit;
 }
 
-/** Nettoie une valeur de champ texte. */
-function field($key, $maxlen = 2000)
+/**
+ * Nettoie une valeur de champ texte.
+ * $singleLine = true : supprime aussi les sauts de ligne (champs mono-ligne :
+ * nom, tel, email, commune, sujet) pour couper toute injection d'en-tete mail.
+ */
+function field($key, $maxlen = 2000, $singleLine = false)
 {
     $v = isset($_POST[$key]) ? trim((string) $_POST[$key]) : '';
     $v = str_replace(["\r", "\0"], '', $v);
+    if ($singleLine) {
+        $v = str_replace(["\n", "\t"], ' ', $v);
+    }
     return mb_substr($v, 0, $maxlen);
+}
+
+/**
+ * Anti-abus : limite le nombre d'envois par IP sur une fenetre glissante.
+ * Empeche le mail-bombing de la boite et le backscatter (accuse de reception
+ * envoye a l'email d'un tiers). Stocke les horodatages dans un fichier temp.
+ * Retourne true si l'envoi est autorise, false si la limite est atteinte.
+ */
+function rate_limit_ok($max = 3, $windowSec = 600)
+{
+    $ip   = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    $file = sys_get_temp_dir() . '/bm2r_rl_' . sha1($ip) . '.json';
+    $now  = time();
+
+    $hits = [];
+    if (is_file($file)) {
+        $raw  = @file_get_contents($file);
+        $data = $raw ? json_decode($raw, true) : [];
+        if (is_array($data)) {
+            foreach ($data as $t) {
+                if (is_int($t) && $t > $now - $windowSec) { $hits[] = $t; }
+            }
+        }
+    }
+
+    if (count($hits) >= $max) {
+        return false;
+    }
+
+    $hits[] = $now;
+    @file_put_contents($file, json_encode($hits), LOCK_EX);
+    return true;
 }
 
 // --- Méthode ---------------------------------------------------------------
@@ -54,12 +93,12 @@ if (field('website') !== '') {
 }
 
 // --- Champs ----------------------------------------------------------------
-$nom     = field('nom', 120);
-$tel     = field('tel', 40);
-$email   = field('email', 160);
-$commune = field('commune', 120);
-$sujet   = field('sujet', 120);
-$message = field('message', 5000);
+$nom     = field('nom', 120, true);
+$tel     = field('tel', 40, true);
+$email   = field('email', 160, true);
+$commune = field('commune', 120, true);
+$sujet   = field('sujet', 120, true);
+$message = field('message', 5000); // multi-ligne : on garde les sauts de ligne
 $consent = isset($_POST['consent']);
 
 // --- Validation ------------------------------------------------------------
@@ -104,6 +143,12 @@ if ($secret !== '' && $secret !== 'CLE_SECRETE_RECAPTCHA') {
     if (!$res || empty($res['success']) || (isset($res['score']) && $res['score'] < $minScore)) {
         respond(false, "Votre demande a été bloquée par la protection anti-spam. Vous pouvez nous appeler au 06 10 03 34 08.");
     }
+}
+
+// --- Anti-abus : limite d'envois par IP (mail-bombing / backscatter) -------
+if (!rate_limit_ok(3, 600)) {
+    http_response_code(429);
+    respond(false, "Vous avez envoyé plusieurs demandes coup sur coup. Merci de patienter quelques minutes ou de nous appeler au 06 10 03 34 08.");
 }
 
 // --- Construction des mails ------------------------------------------------

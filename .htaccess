@@ -32,4 +32,22 @@ RewriteRule ^(.+?)/?$ $1.html [L]
   <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico|woff2?)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
+
+  # 7. En-tetes de securite HTTP (appliques a toutes les reponses, meme erreurs)
+  #    HSTS : force HTTPS 1 an. Retirer includeSubDomains si un sous-domaine passe en HTTP.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  #    Empeche le navigateur de "deviner" un type MIME different (anti-sniffing).
+  Header always set X-Content-Type-Options "nosniff"
+  #    Interdit l'affichage du site dans une iframe tierce (anti-clickjacking).
+  Header always set X-Frame-Options "SAMEORIGIN"
+  #    Limite les infos de provenance envoyees aux sites tiers.
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  #    Desactive les API navigateur sensibles dont le site n'a pas besoin.
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
 </IfModule>
+
+# 8. Protection des fichiers : pas de listing de repertoire, blocage des modeles/docs/scripts
+Options -Indexes
+<FilesMatch "(?i)(^config.*\.php$|.*\.sample\.php$|\.(md|ps1|env|sample|ini|log|bak)$)">
+  Require all denied
+</FilesMatch>
