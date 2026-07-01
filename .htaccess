@@ -22,3 +22,14 @@ RewriteRule ^ /%1 [L,R=301]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
+
+# 6. Cache : HTML/CSS/JS revalides a chaque visite (304 si inchange -> maj immediate apres deploiement)
+#    Images/polices en cache long (elles changent de nom quand elles changent).
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(webp|jpe?g|png|gif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
