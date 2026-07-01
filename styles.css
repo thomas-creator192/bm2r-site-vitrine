@@ -88,14 +88,12 @@ p { margin: 0 0 1em; }
   text-wrap: pretty;
 }
 
-/* Justification du texte courant sur mobile (paragraphes uniquement, jamais les titres) */
+/* Justification du texte courant sur mobile : uniquement les vrais paragraphes de prose.
+   PAS les cartes (icône + titre + courte description), où la justification fait des trous. */
 @media (max-width: 599.98px) {
   .article-body p, .article-body li,
-  .solo p, .solo li,
-  .feature p, .metier-card p, .presta p, .step p,
-  .post-card p, .review p,
-  .faq-answer p,
-  .footer-brand p {
+  .solo p,
+  .faq-answer p {
     text-align: justify;
     text-justify: inter-word;
     -webkit-hyphens: auto;
