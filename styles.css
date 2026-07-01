@@ -701,6 +701,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 .zone-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 16px; font-size: .85rem; color: var(--ink-soft); }
 .zone-legend span { display: inline-flex; align-items: center; gap: 7px; }
 .zone-legend .sw { width: 14px; height: 14px; border-radius: 50%; }
+.zone-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; padding: 22px 26px; background: var(--green-800); color: var(--ivory-100); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
+.zone-note-txt { display: grid; gap: 5px; max-width: 640px; }
+.zone-note-txt strong { font-family: var(--ff-head); font-size: 1.12rem; color: var(--white); }
+.zone-note-txt span { font-size: .95rem; color: var(--ivory-300); line-height: 1.6; }
+.zone-note-cta { display: flex; gap: 10px; flex-wrap: wrap; }
 
 /* ===========================================================
    Responsive
